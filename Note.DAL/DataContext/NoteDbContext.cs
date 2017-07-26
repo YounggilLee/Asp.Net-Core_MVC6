@@ -11,17 +11,17 @@ namespace Note.DAL.DataContext
     {
         private readonly IConfiguration _configuration;
 
-        public NoteDbContext(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        //public NoteDbContext(IConfiguration configuration)
+        //{
+        //    _configuration = configuration;
+        //}
 
         public DbSet<Notice> Notices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NoteDb;");
-            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("LocalDb"));
+             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=NoteDb;");
+           // optionsBuilder.UseSqlServer(_configuration.GetConnectionString("LocalDb"));
         }
     }
 }
