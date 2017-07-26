@@ -10,17 +10,17 @@ namespace Note.DAL
 {
     public class NoticeDal : INoticeDal
     {
-        //private readonly IConfiguration _configuration;
-        
-       
-        //public NoticeDal(IConfiguration configuration)
-        //{
-        //    _configuration = configuration;
-        //}
+        private readonly IConfiguration _configuration;
+
+
+        public NoticeDal(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public List<Notice> GetNoticeList()
         {
-            using (var db = new NoteDbContext())
+            using (var db = new NoteDbContext(_configuration))
             {
                 return db.Notices.OrderByDescending(n => n.NoticeNo).ToList();
             }
